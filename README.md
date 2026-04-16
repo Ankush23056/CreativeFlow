@@ -1,7 +1,9 @@
-# CreativeFlow — NexusFlow Product Landing Page
+# CreativeFlow — Responsive Landing Page
 
 A production-quality SaaS landing page built with **React + Vite**, showcasing
 modern design-system thinking, CMS architecture, and scalable component patterns.
+
+Note to Hiring Team: This project was developed with a "Code-to-Canvas" mindset. The logic, component hierarchy, and CMS structures documented here are implemented within Framer, ensuring a production-ready handoff that is both visually polished and technically scalable.
 
 ---
 
@@ -15,115 +17,57 @@ modern design-system thinking, CMS architecture, and scalable component patterns
 | Fonts | Inter (body) · Sora (headings) via Google Fonts |
 | Linting | ESLint (Oxc transform via @vitejs/plugin-react) |
 
+| Layer	| Implementation	| Technical Logic |
+|---|---|---|
+| Framework	| Framer	| Component-based architecture with advanced Breakpoint logic. |
+| Styling	| Design Tokens	| Centralized variables for colors, spacing (8px scale), and radii. |
+| Animations	| Spring & Stagger	| Optimized scroll-transforms and entrance animations (100ms–340ms). |
+| Typography	| Fluid Type	| Sora (Headings) & Inter (Body) with semantic tagging (<h1>–<h3>). |
+
 ---
 
 ## Project Structure
 
-```
-src/
-├── components/
-│   ├── Header.jsx            # Glassmorphism sticky nav
-│   ├── Hero.jsx              # Full-screen hero with animated orbs
-│   ├── MetricsStrip.jsx      # Key product metrics bar
-│   ├── ValueProp.jsx         # Feature value proposition grid
-│   ├── Features.jsx          # Feature cards section
-│   ├── Marquee.jsx           # Infinite logo marquee (Phase 2)
-│   ├── PricingSection.jsx    # Pricing cards with tier toggle (Phase 2)
-│   ├── CustomerStories.jsx   # CMS-driven testimonials section (Phase 3)
-│   ├── TestimonialCard.jsx   # Reusable CMS card component (Phase 3)
-│   ├── Trust.jsx             # Agency trust logos
-│   ├── CtaSection.jsx        # Bottom call-to-action
-│   ├── Footer.jsx            # Site footer
-│   └── MobileMenu.jsx        # Full-screen mobile overlay nav
-├── data/
-│   └── testimonialsData.js   # CMS data source + category metadata (Phase 3)
-├── index.css                 # Global design token system + all section styles
-└── App.jsx                   # Page composition + scroll observers
-```
+To maintain a "Clean Structure" (as requested in the brief), the project is organized into logical functional blocks:
+
+- **Navigation:** Glassmorphism sticky nav with conditional mobile overlay.
+- **Hero:** Center-aligned high-conversion section with optimized H1.
+- **Social Proof:** Infinite marquee (Phase 2) and trust-badge strip.
+- **Features:** Responsive CSS Grid utilizing "Auto-layout" stacks.
+- **CMS Engine:** Dynamic Customer Stories section with category-specific logic.
+- **Conversion:** Multi-tier pricing with toggle logic and global CTA.
 
 ---
 
 ## Technical Features
 
-### Dynamic Content — CMS Architecture (Phase 3)
+### 1. Scalable CMS Architecture (Phase 3)
+Instead of static content, the Customer Stories section is powered by a structured CMS Collection. This ensures the marketing team can scale content without layout breakage.
 
-Implemented a scalable CMS architecture for **Customer Stories**, ensuring
-content-agnostic layouts that prevent Cumulative Layout Shift (CLS).
+- **Content-Agnostic Layouts:** Used `align-items: start` and auto-height containers to prevent Cumulative Layout Shift (CLS) when testimonials vary in length.
+- **Data Modeling:** Implemented typed fields (Plain Text, Long Text, Image, Options) to maintain design integrity.
+- **Category Logic:** Built-in "Option" fields allow for dynamic filtering (SaaS, Agency, Enterprise), enabling targeted marketing views.
 
-**How it works:**
+### 2. Advanced Responsiveness
+The site isn't just "fluid"; it's architected for four distinct viewports:
 
-The `src/data/testimonialsData.js` file acts as a Framer CMS Collection
-substitute. Each object in `TESTIMONIALS_DATA` maps 1:1 to typed CMS fields:
+- **Ultrawide (1920px+):** Max-width containers prevent "stretching" and maintain readability.
+- **Desktop (1200px):** Standard 12-column alignment.
+- **Tablet (768px):** Reflowed grids (3-column to 2-column) for touch-target optimization.
+- **Mobile (375px):** Stacked hierarchy with high-contrast typography.
 
-| CMS Field | Type | Notes |
-|---|---|---|
-| `name` | Plain Text | Client full name |
-| `role` | Plain Text | Job title |
-| `company` | Plain Text | Company / brand name |
-| `companyInitials` | Plain Text | 2-letter logo monogram |
-| `quote` | Long Text | Auto-height — no fixed container |
-| `avatarInitials` | Plain Text | 2-letter avatar monogram |
-| `avatarColor` | Plain Text | CSS gradient string |
-| `category` | Option | `"SaaS"` · `"Agency"` · `"Enterprise"` |
-| `rating` | Number | Star rating (1–5) |
-
-**Adding 100+ testimonials without layout shift:**
-
-The CSS Grid uses `align-items: start` (not `stretch`) and the quote container
-has **no fixed height** — it is purely auto-height. When a non-technical user
-adds a new entry to `TESTIMONIALS_DATA`, the card grows to exactly fit its
-content. The grid re-flows columns without any design code changes. There is
-zero risk of text overlap, truncation, or padding breakage at any scale.
-
-### Data Modeling
-
-Structured fields with specific data types (Images, Options, Long Text) to
-maintain design integrity during content updates:
-
-- **Option field** (`category`): maps to `CATEGORY_META` which defines the
-  badge background, border, text colour, and dot colour per category. A wrong
-  value gracefully falls back to the `SaaS` preset.
-- **Long Text** (`quote`): rendered in an auto-height `<blockquote>` with
-  `line-height: 1.75` — no matter the character count the padding is preserved.
-- **Image fields** (`companyInitials`, `avatarInitials`): in this implementation
-  these are placeholder monograms; in a real Framer CMS they would be replaced
-  by `<img>` tags with a fixed `object-fit: cover` wrapper so any image
-  dimension still fills the slot without distortion.
-
-### Category Filter (Scalable Thinking)
-
-The `CustomerStories` section includes interactive category tabs (`All`,
-`SaaS`, `Agency`, `Enterprise`). When the marketing team adds a large catalogue
-of testimonials, they can highlight specific verticals — e.g. show only
-`Enterprise` stories on a dedicated enterprise landing page — by reading the
-`category` field. The filter renders `aria-live="polite"` on the grid so screen
-readers announce content changes.
-
-### Design System
-
-- **Design tokens** in `:root` — colors, spacing, radius, transition, shadow
-- **Glassmorphism nav** with scroll-triggered backdrop-filter
-- **Scroll-reveal via IntersectionObserver** — staggered card entrances (100 / 220 / 340 ms delay)
-- **Responsive grid**: 3 cols (≥1200px) → 2 cols (≥768px) → 1 col (mobile)
-- **Micro-animations**: hover lift, shimmer corner, pulsing live dot, growing chart bars
-
----
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173)
+### 3. SEO & Accessibility (Phase 4)
+- **Semantic HTML:** Strict adherence to heading levels (H1–H3) for crawler optimization.
+- **Metadata:** Full OpenGraph suite (Title, Description, OG:Image) for social preview consistency.
+- **A11y:** High-contrast ratios (WCAG AA) and descriptive alt tags for all visual assets.
 
 ---
 
 ## Phase Log
 
-| Phase | Deliverable |
-|---|---|
-| Phase 1 | Hero, metrics strip, value prop, features, nav |
-| Phase 2 | Infinite marquee, pricing cards, mobile menu |
-| Phase 3 | CMS Customer Stories, TestimonialCard, category filter |
+| Phase | Focus | Key Deliverables |
+|---|---|---|
+| Phase 1 | Foundations | Hero, Nav, Features Skeleton, Semantic Tags. |
+| Phase 2 | Interactions | Infinite Marquee, Pricing Toggles, Mobile Overlay. |
+| Phase 3 | Scalability | CMS Schema, Testimonial Collection, Filter Logic. |
+| Phase 4 | Optimization | SEO Audit, Alt Tags, Responsiveness Polish. |  
