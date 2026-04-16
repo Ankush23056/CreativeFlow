@@ -1,9 +1,11 @@
 # CreativeFlow — Responsive Landing Page
 
+🔗 **Live Demo:** [https://creative-flow-omega.vercel.app/](https://creative-flow-omega.vercel.app/)
+
+💻 **Github:** [https://github.com/Ankush23056/CreativeFlow.git](https://github.com/Ankush23056/CreativeFlow.git)
+
 A production-quality SaaS landing page built with **React + Vite**, showcasing
 modern design-system thinking, CMS architecture, and scalable component patterns.
-
-Note to Hiring Team: This project was developed with a "Code-to-Canvas" mindset. The logic, component hierarchy, and CMS structures documented here are implemented within Framer, ensuring a production-ready handoff that is both visually polished and technically scalable.
 
 ---
 
@@ -63,3 +65,8 @@ The site isn't just "fluid"; it's architected for four distinct viewports:
 | Phase 2 | Interactions | Infinite Marquee, Pricing Toggles, Mobile Overlay. |
 | Phase 3 | Scalability | CMS Schema, Testimonial Collection, Filter Logic. |
 | Phase 4 | Optimization | SEO Audit, Alt Tags, Responsiveness Polish. |  
+
+---
+
+## 👤 Author
+**Ankush Kumar** | Frontend Developer Intern
