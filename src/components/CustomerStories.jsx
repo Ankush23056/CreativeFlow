@@ -41,7 +41,7 @@ export default function CustomerStories() {
           </h2>
           <p className="section-sub">
             From nimble SaaS startups to global enterprise teams — see how
-            NexusFlow customers cut delivery time and scale without chaos.
+            CreativeFlow customers cut delivery time and scale without chaos.
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export default function CustomerStories() {
         {/* ── CTA row ── */}
         <div className="stories__cta">
           <p className="stories__cta-text">
-            Join <strong>2,400+</strong> teams already using NexusFlow
+            Join <strong>2,400+</strong> teams already using CreativeFlow
           </p>
           <a href="#pricing" className="btn btn--primary">
             Start Free Trial

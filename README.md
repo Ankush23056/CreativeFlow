@@ -9,20 +9,12 @@ Note to Hiring Team: This project was developed with a "Code-to-Canvas" mindset.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | React 18 + Vite |
-| Styling | Vanilla CSS (design token system) |
-| Animations | CSS keyframes + Intersection Observer |
-| Fonts | Inter (body) · Sora (headings) via Google Fonts |
-| Linting | ESLint (Oxc transform via @vitejs/plugin-react) |
-
 | Layer	| Implementation	| Technical Logic |
 |---|---|---|
 | Framework	| Framer	| Component-based architecture with advanced Breakpoint logic. |
 | Styling	| Design Tokens	| Centralized variables for colors, spacing (8px scale), and radii. |
 | Animations	| Spring & Stagger	| Optimized scroll-transforms and entrance animations (100ms–340ms). |
-| Typography	| Fluid Type	| Sora (Headings) & Inter (Body) with semantic tagging (<h1>–<h3>). |
+| Typography	| Fluid Type	| Sora (Headings) & Inter (Body) with semantic tagging. |
 
 ---
 

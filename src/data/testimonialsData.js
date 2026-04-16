@@ -1,5 +1,5 @@
 /**
- * NexusFlow CMS — Customer Stories Data Source
+ * CreativeFlow CMS — Customer Stories Data Source
  * ─────────────────────────────────────────────
  * This file acts as a Framer CMS Collection substitute.
  * Each object maps 1:1 to the CMS fields defined in the schema:
@@ -35,7 +35,7 @@ export const TESTIMONIALS_DATA = [
     company: "NexaCloud",
     companyInitials: "NC",
     quote:
-      "NexusFlow didn't just speed up our workflow — it completely transformed how our product and design teams collaborate. We went from 3-week sprint cycles to shipping polished features every 5 days. The atomic component system means our whole team speaks the same design language now.",
+      "CreativeFlow didn't just speed up our workflow — it completely transformed how our product and design teams collaborate. We went from 3-week sprint cycles to shipping polished features every 5 days. The atomic component system means our whole team speaks the same design language now.",
     avatarInitials: "SC",
     avatarColor: "linear-gradient(135deg, #3B82F6 0%, #6366F1 100%)",
     category: "SaaS",
@@ -48,7 +48,7 @@ export const TESTIMONIALS_DATA = [
     company: "Pulse Agency",
     companyInitials: "PA",
     quote:
-      "As a creative agency, our reputation lives or dies by how fast we deliver without sacrificing quality. NexusFlow gave us both. We onboarded three new clients in 60 days and the handoff process is now completely seamless — clients can edit their own copy in the CMS without ever touching our design.",
+      "As a creative agency, our reputation lives or dies by how fast we deliver without sacrificing quality. CreativeFlow gave us both. We onboarded three new clients in 60 days and the handoff process is now completely seamless — clients can edit their own copy in the CMS without ever touching our design.",
     avatarInitials: "MW",
     avatarColor: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
     category: "Agency",
@@ -61,7 +61,7 @@ export const TESTIMONIALS_DATA = [
     company: "Axiom Systems",
     companyInitials: "AS",
     quote:
-      "At enterprise scale, consistency is non-negotiable. NexusFlow's design token architecture and CMS-driven content model let us roll out brand updates across 14 regional product lines simultaneously — a job that used to take a month now takes an afternoon. Security, accessibility, and scalability all check out.",
+      "At enterprise scale, consistency is non-negotiable. CreativeFlow's design token architecture and CMS-driven content model let us roll out brand updates across 14 regional product lines simultaneously — a job that used to take a month now takes an afternoon. Security, accessibility, and scalability all check out.",
     avatarInitials: "PS",
     avatarColor: "linear-gradient(135deg, #10B981 0%, #06B6D4 100%)",
     category: "Enterprise",
