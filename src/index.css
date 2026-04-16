@@ -1457,3 +1457,339 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-navy-600); }
+
+/* =====================================================
+   CUSTOMER STORIES — Phase 3 CMS Section
+   ===================================================== */
+
+.customer-stories {
+  padding-block: var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle ambient glow behind the section */
+.customer-stories::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Section header ── */
+.stories__header {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: var(--space-4);
+}
+
+.stories__header .section-label {
+  justify-content: center;
+}
+
+/* ── Category filter tabs ── */
+.stories__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.stories__filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--color-slate-400);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.stories__filter-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--color-slate-200);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.stories__filter-btn--active {
+  background: linear-gradient(135deg, var(--color-blue) 0%, #6366F1 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
+}
+
+.stories__filter-btn--active:hover {
+  background: linear-gradient(135deg, var(--color-blue) 0%, #6366F1 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
+}
+
+.stories__filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Testimonial grid ── */
+/*  Desktop: 3 columns | Tablet: 2 columns | Mobile: 1 column */
+.stories__grid {
+  display: grid;
+  grid-template-columns: 1fr;                /* Mobile */
+  gap: 24px;
+  align-items: start;                        /* auto-height rows — no stretch */
+}
+
+@media (min-width: 768px) {
+  .stories__grid {
+    grid-template-columns: repeat(2, 1fr);   /* Tablet */
+  }
+}
+
+@media (min-width: 1200px) {
+  .stories__grid {
+    grid-template-columns: repeat(3, 1fr);   /* Desktop */
+  }
+}
+
+/* ── Testimonial Card ── */
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--color-navy-800);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow),
+              border-color var(--transition-base);
+}
+
+/* Top-left corner shimmer accent */
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+  transition: opacity var(--transition-base);
+  opacity: 0;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.testimonial-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Card header: logo + category tag ── */
+.tcard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.tcard__company-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-slate-300);
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+
+/* Category tag — colours injected inline from CATEGORY_META */
+.tcard__category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.tcard__category-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* ── Stars ── */
+.tcard__stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.tcard__star {
+  width: 14px;
+  height: 14px;
+  fill: #F59E0B;
+  flex-shrink: 0;
+}
+
+/* ── Quote — auto-height, no fixed constraints ── */
+.tcard__quote {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-slate-400);
+  position: relative;
+  /* Auto-height: no min/max height set.
+     Longer quotes grow the card; the CSS Grid adjusts naturally. */
+}
+
+.tcard__quote-mark {
+  position: absolute;
+  top: -8px;
+  left: -4px;
+  font-family: var(--font-heading);
+  font-size: 56px;
+  line-height: 1;
+  color: rgba(59, 130, 246, 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Author row ── */
+.tcard__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;         /* pushed to the bottom of the flex column */
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tcard__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: -0.5px;
+}
+
+.tcard__author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tcard__name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-slate-200);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tcard__role {
+  font-size: 12px;
+  color: var(--color-slate-500);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tcard__company {
+  color: var(--color-blue-400);
+}
+
+/* ── Bottom CTA row ── */
+.stories__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .stories__cta {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.stories__cta-text {
+  font-size: 15px;
+  color: var(--color-slate-400);
+}
+
+.stories__cta-text strong {
+  color: var(--color-slate-200);
+}
+
+/* ── Scroll-reveal entrance for the grid cards ── */
+.customer-stories.reveal .testimonial-card {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity  0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--transition-slow),
+    border-color var(--transition-base);
+}
+
+/* Staggered delay per card: 1st = 100ms, 2nd = 220ms, 3rd = 340ms */
+.customer-stories.reveal .testimonial-card:nth-child(1) { transition-delay: 0.10s; }
+.customer-stories.reveal .testimonial-card:nth-child(2) { transition-delay: 0.22s; }
+.customer-stories.reveal .testimonial-card:nth-child(3) { transition-delay: 0.34s; }
+
+.customer-stories.visible .testimonial-card {
+  opacity: 1;
+  transform: translateY(0);
+}

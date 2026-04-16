@@ -5,8 +5,9 @@ import MetricsStrip from './components/MetricsStrip'
 import ValueProp    from './components/ValueProp'
 import Features     from './components/Features'
 import Marquee      from './components/Marquee'
-import PricingSection from './components/PricingSection'
-import Trust        from './components/Trust'
+import PricingSection    from './components/PricingSection'
+import CustomerStories   from './components/CustomerStories'
+import Trust             from './components/Trust'
 import CtaSection   from './components/CtaSection'
 import Footer       from './components/Footer'
 import MobileMenu   from './components/MobileMenu'
@@ -68,6 +69,9 @@ export default function App() {
 
         {/* Phase 2: pricing cards (Card_Feature) */}
         <PricingSection />
+
+        {/* Phase 3: CMS-driven Customer Stories / Testimonials */}
+        <CustomerStories />
 
         <Trust />
         <CtaSection />
